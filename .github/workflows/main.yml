@@ -5,9 +5,7 @@ name: Build
 
 # Workflow's trigger
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
 
 # Workflow's jobs
 jobs:
@@ -61,5 +59,8 @@ jobs:
       - name: Build  & release app
         run: |
           npm run release
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Upload release
+        uses: actions/upload-artifact@v3
+        with:
+          name: deb
+          path: ./dist_electron/

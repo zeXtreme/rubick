@@ -44,13 +44,13 @@ module.exports = {
           releaseName: 'normal', // normal 弹窗 / major 强制更新
           releaseNotesFile: './release/releaseNotes.md',
         },
-        publish: [
-          {
-            provider: 'github',
-            owner: 'rubickCenter',
-            repo: 'rubick',
-          },
-        ],
+        // publish: [
+        //   {
+        //     provider: 'github',
+        //     owner: 'rubickCenter',
+        //     repo: 'rubick',
+        //   },
+        // ],
         // files: ["dist_electron/**/*"],
         dmg: {
           contents: [
@@ -67,44 +67,50 @@ module.exports = {
             },
           ],
         },
-        mac: {
-          icon: 'public/icons/icon.icns',
+        // mac: {
+        //   icon: 'public/icons/icon.icns',
+        //   target: [
+        //     {
+        //       target: 'dmg',
+        //       arch: ['x64', 'arm64'],
+        //     },
+        //   ],
+        //   artifactName: 'rubick-${version}-${arch}.dmg',
+        //   gatekeeperAssess: false,
+        //   entitlementsInherit: './release/entitlements.mac.plist',
+        //   entitlements: './release/entitlements.mac.plist',
+        //   hardenedRuntime: true,
+        //   category: 'public.app-category.developer-tools',
+        //   extendInfo: {
+        //     LSUIElement: 1,
+        //   },
+        // },
+        // win: {
+        //   icon: 'public/icons/icon.ico',
+        //   artifactName: 'rubick-Setup-${version}-${arch}.exe',
+        //   target: [
+        //     {
+        //       target: 'nsis',
+        //       arch: ['x64', 'ia32'],
+        //     },
+        //   ],
+        // },
+        // nsis: {
+        //   shortcutName: 'rubick',
+        //   oneClick: false,
+        //   allowToChangeInstallationDirectory: true,
+        //   include: 'public/installer.nsh',
+        // },
+        linux: {
+          icon: 'public/icons/',
+          // publish: ['github'],
           target: [
             {
-              target: 'dmg',
+              target:'deb',
               arch: ['x64', 'arm64'],
             },
           ],
-          artifactName: 'rubick-${version}-${arch}.dmg',
-          gatekeeperAssess: false,
-          entitlementsInherit: './release/entitlements.mac.plist',
-          entitlements: './release/entitlements.mac.plist',
-          hardenedRuntime: true,
-          category: 'public.app-category.developer-tools',
-          extendInfo: {
-            LSUIElement: 1,
-          },
-        },
-        win: {
-          icon: 'public/icons/icon.ico',
-          artifactName: 'rubick-Setup-${version}-${arch}.exe',
-          target: [
-            {
-              target: 'nsis',
-              arch: ['x64', 'ia32'],
-            },
-          ],
-        },
-        nsis: {
-          shortcutName: 'rubick',
-          oneClick: false,
-          allowToChangeInstallationDirectory: true,
-          include: 'public/installer.nsh',
-        },
-        linux: {
-          icon: 'public/icons/',
-          publish: ['github'],
-          target: 'deb',
+          artifactName: 'rubick-${version}-${arch}.deb',
         },
       },
     },
